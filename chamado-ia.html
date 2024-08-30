@@ -233,7 +233,7 @@
                     <i class="fas fa-ellipsis-h"></i>
                   </span>
                 </div>
-                <div class="chat-room">
+                <div class="chat-room" id="chat-room">
                   <div class="message message-left">
                     <div class="avatar-wrapper avatar-small">
                       <img src="./img/Coda.png" alt="avatar" />
@@ -242,38 +242,10 @@
                       Sou a Côda! Em que posso ajuda-lo?
                     </div>
                   </div>
-                  <div class="message message-right">
-                    <div class="avatar-wrapper avatar-small">
-                      <img src="./img/personas/ARTHUR.png" alt="avatar" />
-                    </div>
-                    <div class="bubble bubble-dark">
-                      Estou sem internet. O que eu faço?
-                    </div>
-                  </div>
-                  <div class="message message-left">
-                    <div class="avatar-wrapper avatar-small">
-                      <img src="./img/Coda.png" alt="avatar" />
-                    </div>
-                    <div class="bubble bubble-light">
-                      Verificando nosso hitórico de chamados, vou listar algumas ações que você poderá fazer para solucionar seu problema.
-                    </div>
-                    <div class="bubble bubble-light">
-                      - Reinicie o modem, retirando-o da tomada e ligue-o novamente após 1 minuto.
-                    </div>
-                    <div class="bubble bubble-light">
-                      - Verifique se todos os cabos estão devidamente conectados no aparelho.
-                    </div>
-                    <div class="bubble bubble-light">
-                      - Reinicie o dispositivo (computador, notebook, smartphone, tablet) que está tentando acessar a internet.
-                    </div>
-                    <div class="bubble bubble-light">
-                      Consegui te ajudar ou desejar abrir um chamado?
-                    </div>
-                  </div>
                 </div>
-                <div class="type-area">
+                <form id="chat-form" class="type-area">
                   <div class="input-wrapper">
-                    <input type="text" id="inputText" placeholder="Menssagem" />
+                    <input type="text" id="inputText" name="message" placeholder="Mensagem" required />
                   </div>
                   <span class="button-add">
                     <i class="fas fa-plus-circle"></i>
@@ -300,8 +272,8 @@
                       </span>
                     </div>
                   </span>
-                  <button class="button-send">Enviar</button>
-                </div>
+                  <button type="submit" class="button-send">Enviar</button>
+                </form>
               
               </div>
 
@@ -356,6 +328,7 @@
   <script src="../js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../js/sapceison.min.js?v=1.0.7"></script>
   <script  src="./js/script.js"></script>
+  <script src="./js/comunicacao_gemini.js"></script>
   
   
 </body>

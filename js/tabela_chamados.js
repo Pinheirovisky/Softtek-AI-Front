@@ -1,5 +1,8 @@
+const API_URL = "http://localhost:8080/api/chamados"
+
+
 // Tabela de Chamados Abertos
-fetch("../json/chamadosEmFila.json")
+fetch(`${API_URL}/em-fila`)
 .then(function(response){
   return response.json();
 })
@@ -29,39 +32,42 @@ fetch("../json/chamadosEmFila.json")
   placeholder.innerHTML += out;
 })
 
-fetch("../json/chamadosEmTratamento.json")
-.then(function(response){
-  return response.json();
-})
-.then(function(chamados){
-  let placeholder = document.querySelector("#chamados_abertos");
-  let out = "";
-  for( let chamado of chamados){
-    out += `
-      <tr>
-        <td class="align-middle text-center text-sm">
-          <span class="badge badge-sm bg-warning">EM TRATATIVA</span>
-        </td>
-        <td class="align-middle text-center">
-          <span class="text-secondary text-xs font-weight-bold">${chamado.aberto}</span>
-        </td>
-        <td>
-          <a href="">
+fetch(`${API_URL}/em-tratamento`)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(chamados) {
+    let placeholder = document.querySelector("#chamados_abertos");
+    let out = "";
+    for (let chamado of chamados) {
+      out += `
+        <tr>
+          <td class="align-middle text-center text-sm">
+            <span class="badge badge-sm bg-warning">EM TRATATIVA</span>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">${chamado.aberto}</span>
+          </td>
+          <td>
+            <a href="">
               <h6 class="mb-0 text-sm">${chamado.numero}</h6>
             </a>
-        </td>
-        <td class="align-middle text-center">
-          <span class="text-secondary text-xs font-weight-bold">${chamado.descricao}</span>
-        </td>
-      </tr>
+          </td>
+          <td class="align-middle text-center">
+            <span class="text-secondary text-xs font-weight-bold">${chamado.descricao}</span>
+          </td>
+        </tr>
+      `;
+    }
+    placeholder.innerHTML += out;
+  })
+  .catch(function(error) {
+    console.error("Erro ao buscar os chamados:", error);
+  });
 
-    `;
-  }
-  placeholder.innerHTML += out;
-})
 
 // Tabela de Chamados Pendentes
-fetch("../json/chamadosValidacao.json")
+fetch(`${API_URL}/em-validacao`)
 .then(function(response){
   return response.json();
 })
@@ -92,7 +98,7 @@ fetch("../json/chamadosValidacao.json")
 })
 
 // Tabela de Chamados Encerrados
-fetch("../json/chamadosResolvidos.json")
+fetch(`${API_URL}/resolvidos`)
 .then(function(response){
   return response.json();
 })
